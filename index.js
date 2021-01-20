@@ -11,5 +11,13 @@ var transport = nodemailer.createTransport({
   },
 });
 
+var mailOptions = {
+  from: '"Coderspace Team" <info@coderspace.com>',
+  to: "user@example.com",
+  subject: "Nice Nodemailer test",
+  text: "Hey there, it’s our first message sent with Nodemailer ;) ",
+  html: "<b>Hey there! </b><br> This is our first message sent with Nodemailer",
+};
+
 const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => console.log(`Node js server running on port ${PORT}`));
