@@ -19,5 +19,15 @@ var mailOptions = {
   html: "<b>Hey there! </b><br> This is our first message sent with Nodemailer",
 };
 
+app.post("/sendEmail", async (req, res) => {
+  if (req.params.to) {
+    mailOptions = { ...mailOptions, to: req.params.to };
+  }
+  const info = await transport.sendMail(mailOptions);
+  console.log(info.messageId);
+  console.log(info);
+  res.json(info);
+});
+
 const PORT = process.env.PORT || 6000;
 app.listen(PORT, () => console.log(`Node js server running on port ${PORT}`));
